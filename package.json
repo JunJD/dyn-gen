@@ -3,12 +3,18 @@
   "private": true,
   "scripts": {
     "dev": "turbo run dev",
-    "dev:app": "turbo run dev --filter='app'",
-    "dev:agent": "turbo run dev --filter='agent'",
-    "dev:mcp": "turbo run dev --filter='mcp'",
+    "dev:app": "turbo run dev --filter='@repo/app'",
+    "dev:agent": "turbo run dev --filter='@repo/agent'",
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "clean": "turbo run clean"
+    "clean": "turbo run clean",
+    "repair:deps": "pnpm install --force",
+    "test": "pnpm test:regression",
+    "test:agent": "cd apps/agent && uv run python -m unittest discover -s tests -p 'test_*.py'",
+    "test:app:e2e": "pnpm --filter @repo/app test:e2e",
+    "test:app:e2e:headed": "pnpm --filter @repo/app test:e2e:headed",
+    "test:app:e2e:install": "pnpm --filter @repo/app test:e2e:install",
+    "test:regression": "pnpm test:agent && pnpm test:app:e2e"
   },
   "devDependencies": {
     "turbo": "^2.5.4",

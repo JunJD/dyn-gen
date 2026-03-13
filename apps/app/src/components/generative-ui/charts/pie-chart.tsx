@@ -1,3 +1,4 @@
+import { getMessages } from "@/i18n/messages";
 import {
   PieChart as RechartsPieChart,
   Pie,
@@ -21,17 +22,19 @@ export const PieChartProps = z.object({
 type PieChartProps = z.infer<typeof PieChartProps>;
 
 export function PieChart({ title, description, data }: PieChartProps) {
+  const messages = getMessages();
+
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
-      <div className="rounded-xl border dark:border-zinc-700 shadow-sm p-6 max-w-lg mx-auto my-6 bg-[var(--background)]">
+      <div className="workspace-card mx-auto my-6 max-w-lg rounded-xl p-6">
         <div className="mb-4">
-          <h3 className="text-xl font-bold dark:text-white">{title}</h3>
-          <p className="text-sm text-gray-600 dark:text-zinc-400">
+          <h3 className="text-xl font-bold text-[color:var(--text-primary)]">{title}</h3>
+          <p className="text-sm text-[color:var(--text-secondary)]">
             {description}
           </p>
         </div>
-        <p className="text-gray-500 dark:text-zinc-400 text-center py-8">
-          No data available
+        <p className="py-8 text-center text-[color:var(--text-tertiary)]">
+          {messages.charts.noData}
         </p>
       </div>
     );
@@ -44,10 +47,10 @@ export function PieChart({ title, description, data }: PieChartProps) {
   }));
 
   return (
-    <div className="rounded-xl border dark:border-zinc-700 shadow-sm p-6 max-w-lg mx-auto my-6 bg-[var(--background)]">
+    <div className="workspace-card mx-auto my-6 max-w-lg rounded-xl p-6">
       <div className="mb-4">
-        <h3 className="text-xl font-bold dark:text-white">{title}</h3>
-        <p className="text-sm text-gray-600 dark:text-zinc-400">
+        <h3 className="text-xl font-bold text-[color:var(--text-primary)]">{title}</h3>
+        <p className="text-sm text-[color:var(--text-secondary)]">
           {description}
         </p>
       </div>
@@ -70,14 +73,14 @@ export function PieChart({ title, description, data }: PieChartProps) {
       {/* Legend */}
       <div className="mt-4 grid grid-cols-2 gap-2">
         {data.map((item, index) => (
-          <div key={index} className="flex items-center gap-2">
+          <div key={index} className="workspace-pill flex items-center gap-2 rounded-xl px-3 py-2">
             <div
-              className="w-3 h-3 rounded-sm"
+              className="h-3 w-3 rounded-sm"
               style={{
                 backgroundColor: CHART_COLORS[index % CHART_COLORS.length],
               }}
             />
-            <span className="text-sm dark:text-zinc-300">{item.label}</span>
+            <span className="text-sm text-[color:var(--text-secondary)]">{item.label}</span>
           </div>
         ))}
       </div>

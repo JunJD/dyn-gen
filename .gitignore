@@ -12,6 +12,8 @@ node_modules
 
 # testing
 coverage
+playwright-report
+test-results
 
 # next.js
 .next/
@@ -57,3 +59,9 @@ bun.lockb
 
 # Tools
 .claude
+
+# Local media artifacts
+apps/app/.media/*
+!apps/app/.media/.gitkeep
+apps/app/public/media/generated/*
+!apps/app/public/media/generated/.gitkeep

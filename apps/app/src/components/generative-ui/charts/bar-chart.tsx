@@ -1,3 +1,4 @@
+import { getMessages } from "@/i18n/messages";
 import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { z } from 'zod';
 import { CHART_COLORS, CHART_CONFIG } from './config';
@@ -16,14 +17,16 @@ export const BarChartProps = z.object({
 type BarChartProps = z.infer<typeof BarChartProps>;
 
 export function BarChart({ title, description, data }: BarChartProps) {
+  const messages = getMessages();
+
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
-      <div className="rounded-xl border dark:border-zinc-700 shadow-sm p-6 max-w-2xl mx-auto my-6 bg-[var(--background)]">
+      <div className="workspace-card mx-auto my-6 max-w-2xl rounded-xl p-6">
         <div className="mb-4">
-          <h3 className="text-xl font-bold dark:text-white">{title}</h3>
-          <p className="text-sm text-gray-600 dark:text-zinc-400">{description}</p>
+          <h3 className="text-xl font-bold text-[color:var(--text-primary)]">{title}</h3>
+          <p className="text-sm text-[color:var(--text-secondary)]">{description}</p>
         </div>
-        <p className="text-gray-500 dark:text-zinc-400 text-center py-8">No data available</p>
+        <p className="py-8 text-center text-[color:var(--text-tertiary)]">{messages.charts.noData}</p>
       </div>
     );
   }
@@ -35,10 +38,10 @@ export function BarChart({ title, description, data }: BarChartProps) {
   }));
 
   return (
-    <div className="rounded-xl border dark:border-zinc-700 shadow-sm p-6 max-w-2xl mx-auto my-6 bg-[var(--background)]">
+    <div className="workspace-card mx-auto my-6 max-w-2xl rounded-xl p-6">
       <div className="mb-4">
-        <h3 className="text-xl font-bold dark:text-white">{title}</h3>
-        <p className="text-sm text-gray-600 dark:text-zinc-400">{description}</p>
+        <h3 className="text-xl font-bold text-[color:var(--text-primary)]">{title}</h3>
+        <p className="text-sm text-[color:var(--text-secondary)]">{description}</p>
       </div>
 
       <ResponsiveContainer width="100%" height={300}>

@@ -226,19 +226,21 @@ This is a Turborepo monorepo using pnpm workspaces.
 # Install dependencies (all apps)
 pnpm install
 
-# Start all apps (app, agent, mcp)
+# Start all apps (app and agent)
 pnpm dev
 
 # Start individually
 pnpm dev:app    # Next.js frontend on port 3000
 pnpm dev:agent  # LangGraph agent on port 8123
-pnpm dev:mcp    # MCP server
 
 # Build all apps
 pnpm build
 
 # Lint all apps
 pnpm lint
+
+# Repair broken local package bins (for example: "next: command not found")
+pnpm repair:deps
 ```
 
 ### Environment Setup

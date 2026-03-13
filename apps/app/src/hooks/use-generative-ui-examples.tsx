@@ -15,6 +15,9 @@ import { BarChart, BarChartProps } from "@/components/generative-ui/charts/bar-c
 import { MeetingTimePicker } from "@/components/generative-ui/meeting-time-picker";
 import { ToolReasoning } from "@/components/tool-rendering";
 
+const asCopilotSchema = <TSchema extends z.ZodTypeAny>(schema: TSchema) =>
+  schema as unknown as never;
+
 export const useGenerativeUIExamples = () => {
   const { theme, setTheme } = useTheme();
 
@@ -24,7 +27,7 @@ export const useGenerativeUIExamples = () => {
   useFrontendTool({
     name: "toggleTheme",
     description: "Frontend tool for toggling the theme of the app.",
-    parameters: z.object({}),
+    parameters: asCopilotSchema(z.object({})),
     handler: async () => {
       setTheme(theme === "dark" ? "light" : "dark")
     },
@@ -36,14 +39,14 @@ export const useGenerativeUIExamples = () => {
   useComponent({
     name: "pieChart",
     description: "Controlled Generative UI that displays data as a pie chart.",
-    parameters: PieChartProps,
+    parameters: asCopilotSchema(PieChartProps),
     render: PieChart,
   });
 
   useComponent({
     name: "barChart",
     description: "Controlled Generative UI that displays data as a bar chart.",
-    parameters: BarChartProps,
+    parameters: asCopilotSchema(BarChartProps),
     render: BarChart,
   });
 
@@ -62,10 +65,10 @@ export const useGenerativeUIExamples = () => {
   useHumanInTheLoop({
     name: "scheduleTime",
     description: "Use human-in-the-loop to schedule a meeting with the user.",
-    parameters: z.object({
+    parameters: asCopilotSchema(z.object({
       reasonForScheduling: z.string().describe("Reason for scheduling, very brief - 5 words."),
       meetingDuration: z.number().describe("Duration of the meeting in minutes"),
-    }),
+    })),
     render: ({ respond, status, args }) => {
       return <MeetingTimePicker status={status} respond={respond} {...args} />;
     },

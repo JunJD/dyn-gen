@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useAppMessages } from "@/i18n/provider";
 
 interface ToolReasoningProps {
   name: string;
@@ -9,23 +10,33 @@ interface ToolReasoningProps {
 }
 
 const statusIndicator = {
-  executing: <span className="inline-block h-3 w-3 rounded-full border-2 border-gray-400 border-t-transparent animate-spin" />,
-  inProgress: <span className="inline-block h-3 w-3 rounded-full border-2 border-gray-400 border-t-transparent animate-spin" />,
-  complete: <span className="text-green-500 text-xs">✓</span>,
+  executing: (
+    <span className="inline-block h-3 w-3 rounded-full border-2 border-[color:var(--text-tertiary)] border-t-[color:var(--accent)] animate-spin" />
+  ),
+  inProgress: (
+    <span className="inline-block h-3 w-3 rounded-full border-2 border-[color:var(--text-tertiary)] border-t-[color:var(--accent)] animate-spin" />
+  ),
+  complete: <span className="text-xs text-[color:var(--accent)]">✓</span>,
 };
 
 function formatValue(value: unknown): string {
-  if (Array.isArray(value)) return `[${value.length} items]`;
-  if (typeof value === "object" && value !== null)
-    return `{${Object.keys(value).length} keys}`;
+  if (Array.isArray(value)) return String(value.length);
+  if (typeof value === "object" && value !== null) {
+    return String(Object.keys(value).length);
+  }
   if (typeof value === "string") return `"${value}"`;
   return String(value);
 }
 
 export function ToolReasoning({ name, args, status }: ToolReasoningProps) {
+  const messages = useAppMessages();
   const entries = args ? Object.entries(args) : [];
   const detailsRef = useRef<HTMLDetailsElement>(null);
-  const toolStatus = status as "complete" | "inProgress" | "executing"
+  const toolStatus = status as "complete" | "inProgress" | "executing";
+  const toolName =
+    messages.toolReasoning.toolNames[
+      name as keyof typeof messages.toolReasoning.toolNames
+    ] ?? name;
 
   // Auto-open while executing, auto-close when complete
   useEffect(() => {
@@ -37,26 +48,41 @@ export function ToolReasoning({ name, args, status }: ToolReasoningProps) {
     <div className="my-2 text-sm">
       {entries.length > 0 ? (
         <details ref={detailsRef} open>
-          <summary className="flex items-center gap-2 text-gray-600 dark:text-gray-400 cursor-pointer list-none">
+          <summary className="workspace-focusable flex cursor-pointer list-none items-center gap-2 rounded-md text-[color:var(--text-secondary)]">
             {statusIndicator[toolStatus]}
-            <span className="font-medium">{name}</span>
+            <span className="font-medium">{toolName}</span>
             <span className="text-[10px]">▼</span>
           </summary>
-          <div className="pl-5 mt-1 space-y-1 text-xs text-gray-500 dark:text-zinc-400">
+          <div className="mt-1 space-y-1 pl-5 text-xs text-[color:var(--text-tertiary)]">
             {entries.map(([key, value]) => (
-              <div key={key} className="flex gap-2 min-w-0">
-                <span className="font-medium shrink-0">{key}:</span>
-                <span className="text-gray-600 dark:text-gray-400 truncate">
-                  {formatValue(value)}
+              <div key={key} className="flex min-w-0 gap-2">
+                <span className="font-medium shrink-0">
+                  {messages.toolReasoning.argLabels[
+                    key as keyof typeof messages.toolReasoning.argLabels
+                  ] ?? key}
+                  :
+                </span>
+                <span className="truncate text-[color:var(--text-secondary)]">
+                  {Array.isArray(value)
+                    ? messages.toolReasoning.arraySummary.replace(
+                        "{count}",
+                        formatValue(value),
+                      )
+                    : typeof value === "object" && value !== null
+                      ? messages.toolReasoning.objectSummary.replace(
+                          "{count}",
+                          formatValue(value),
+                        )
+                      : formatValue(value)}
                 </span>
               </div>
             ))}
           </div>
         </details>
       ) : (
-        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+        <div className="flex items-center gap-2 text-[color:var(--text-secondary)]">
           {statusIndicator[toolStatus]}
-          <span className="font-medium">{name}</span>
+          <span className="font-medium">{toolName}</span>
         </div>
       )}
     </div>

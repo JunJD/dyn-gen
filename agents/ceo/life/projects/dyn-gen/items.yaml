@@ -1,0 +1,352 @@
+- id: dyn-gen-001
+  fact: "The board approved the Senior UI/UX Designer agent hire for dyn-gen on 2026-03-11."
+  category: milestone
+  timestamp: "2026-03-11"
+  source: "2026-03-11"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 5
+- id: dyn-gen-002
+  fact: "The Senior UI/UX Designer agent reports to the CEO and uses agents/designer/AGENTS.md in the dyn-gen workspace."
+  category: status
+  timestamp: "2026-03-11"
+  source: "2026-03-11"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 5
+- id: dyn-gen-003
+  fact: "On 2026-03-11, the CEO created DYN-6 and assigned the Senior UI/UX Designer to deliver the phase 1 visual direction, token system, and implementation-ready handoff for DYN-5."
+  category: milestone
+  timestamp: "2026-03-11"
+  source: "2026-03-11"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 5
+- id: dyn-gen-004
+  fact: "On 2026-03-11, DYN-5 moved to in_progress and the Founding Engineer handoff was intentionally deferred until the design spec is ready."
+  category: status
+  timestamp: "2026-03-11"
+  source: "2026-03-11"
+  status: superseded
+  superseded_by: dyn-gen-007
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 6
+- id: dyn-gen-005
+  fact: "On 2026-03-12, DYN-6 was actively executing under the Senior UI/UX Designer while DYN-5 remained in progress awaiting the design handoff before any engineering assignment."
+  category: status
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: superseded
+  superseded_by: dyn-gen-007
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 4
+- id: dyn-gen-006
+  fact: "On 2026-03-12, the shared design artifact `plans/dyn-6-premium-minimal-ui-handoff.md` existed and was concrete enough for the CEO to treat it as the DYN-6 handoff."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 4
+- id: dyn-gen-007
+  fact: "On 2026-03-12, the CEO created DYN-7 and assigned the Founding Engineer to implement the phase 1 premium minimal UI redesign for DYN-5 based on the DYN-6 handoff."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 4
+- id: dyn-gen-008
+  fact: "On 2026-03-12, the CEO verified `pnpm --filter @repo/app lint` passes on the DYN-7 redesign while `pnpm --filter @repo/app build` fails on `/_global-error` with `TypeError: Cannot read properties of null (reading 'useContext')`."
+  category: status
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: superseded
+  superseded_by: dyn-gen-011
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 4
+- id: dyn-gen-009
+  fact: "On 2026-03-12, the CEO reproduced the same `/_global-error` production-build failure in an isolated baseline worktree at commit `ad1c6c2`, confirming the blocker predates the premium minimal redesign."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 3
+- id: dyn-gen-010
+  fact: "On 2026-03-12, the CEO created DYN-8 and assigned the Founding Engineer to fix the pre-existing production build failure while keeping DYN-5 in progress for end-to-end verification."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 4
+- id: dyn-gen-011
+  fact: "On 2026-03-12, DYN-8 resolved the pre-existing app build failure by forcing `NODE_ENV=production next build` in `apps/app/package.json`."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 3
+- id: dyn-gen-012
+  fact: "On 2026-03-12, the CEO closed DYN-5 after independently verifying that `pnpm --filter @repo/app build` and `pnpm --filter @repo/app lint` both pass in the current workspace."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 3
+- id: dyn-gen-013
+  fact: "On 2026-03-12, the board assigned DYN-12 to the CEO to deliver phase 2 for dyn-gen: Chinese-first i18n with Chinese as the default language plus legacy bug cleanup."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 2
+- id: dyn-gen-014
+  fact: "On 2026-03-12, the CEO verified the current app baseline still passes `pnpm --filter @repo/app lint` and `pnpm --filter @repo/app build`, wrote `plans/2026-03-12-dyn-12-phase-2-i18n-execution-brief.md`, and created DYN-13 for the Founding Engineer to execute Chinese-first i18n and a bounded regression sweep while DYN-12 remains in progress for oversight."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 3
+- id: dyn-gen-015
+  fact: "On 2026-03-12, a comment-triggered CEO wake on DYN-12 was caused by the CEO's own prior oversight comment; the CEO confirmed DYN-13 still had no blocker comments and responded by nudging the child thread to either execute the current brief or escalate a blocker there."
+  category: status
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-016
+  fact: "On 2026-03-12, DYN-13 completed the phase-two zh-CN-first i18n pass by adding a centralized locale layer under `apps/app/src/i18n/`, localizing the visible shell surfaces, and fixing the meeting-picker regression so time slots render during both `inProgress` and `executing`."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-017
+  fact: "On 2026-03-12, the CEO independently reran `pnpm --filter @repo/app lint` and `pnpm --filter @repo/app build`, confirmed the DYN-13 delivery, and closed DYN-12 while recording that model-generated chart titles and agent-authored task content still follow prompt language instead of being force-translated in the UI layer."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-018
+  fact: "On 2026-03-12, the board assigned DYN-15 to the CEO to start phase 3 for dyn-gen: pivot the current CopilotKit/LangGraph app toward a motion-agent workflow with script-table editing, prompt-to-image generation, generated video composition, and role hiring."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-019
+  fact: "On 2026-03-12, the CEO wrote `plans/2026-03-12-dyn-15-motion-agent-execution-brief.md`, moved DYN-15 to in_progress, and created DYN-16 for the Senior UI/UX Designer plus DYN-17 for the Founding Engineer to execute the first motion-agent vertical slice."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-020
+  fact: "On 2026-03-12, the CEO submitted the Applied Multimodal Engineer hire request for dyn-gen and received pending approval `3e649c54-9e8e-4a20-8337-8ef7560306b7` because the current team lacks a dedicated owner for the multimodal media pipeline."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: superseded
+  superseded_by: dyn-gen-023
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-021
+  fact: "On 2026-03-12, DYN-16 completed the motion-agent workbench design handoff and saved the implementation-ready spec to `plans/2026-03-12-dyn-16-motion-agent-workbench-design-handoff.md`."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-022
+  fact: "On 2026-03-12, the board commented on DYN-15 that the local `.env` already contains the needed model configuration and that the repo includes local `skills/`, especially `@json-render` and `remotion` guidance, for the phase-3 motion-agent work."
+  category: status
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-023
+  fact: "On 2026-03-12, approval `3e649c54-9e8e-4a20-8337-8ef7560306b7` was approved, the CEO created DYN-19 for the Applied Multimodal Engineer, and DYN-15 remained in progress with DYN-17 plus DYN-19 as the active execution tracks."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-024
+  fact: "On 2026-03-12, the CEO independently verified the DYN-19 media-foundation delivery by rerunning `pnpm --filter @repo/app lint` and `pnpm --filter @repo/app build`, then smoke-testing `/api/media/image-jobs` and `/api/media/timeline`, and closed both DYN-19 and the parent DYN-15."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-12"
+  access_count: 1
+- id: dyn-gen-025
+  fact: "On 2026-03-12, the CEO started DYN-18 by writing `plans/2026-03-13-dyn-18-testing-system-execution-brief.md`, creating DYN-20 for the Founding Engineer to stand up the regression harness, and submitting the QA Automation Engineer hire request with pending approval `c4e1cd2a-9854-4f09-9962-e6fedc4e57ca`."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-13"
+  access_count: 7
+- id: dyn-gen-026
+  fact: "On 2026-03-13, DYN-20 completed the engineering testing track for DYN-18 by adding the Playwright harness, BDD-style feature files, executable specs, and test-mapping docs under `apps/app/tests` plus `apps/app/playwright.config.ts`."
+  category: milestone
+  timestamp: "2026-03-13"
+  source: "2026-03-13"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-13"
+  access_count: 6
+- id: dyn-gen-027
+  fact: "On 2026-03-13, the CEO independently verified `pnpm --filter @repo/app lint`, `pnpm test:agent`, and `pnpm test:app:e2e` pass, observed `pnpm --filter @repo/app build` fail in this shell because `next/font` could not fetch Google-hosted `Instrument Sans` and `Newsreader`, and kept DYN-18 in progress pending QA approval `c4e1cd2a-9854-4f09-9962-e6fedc4e57ca` plus the QA-owned scenario track."
+  category: status
+  timestamp: "2026-03-13"
+  source: "2026-03-13"
+  status: superseded
+  superseded_by: dyn-gen-028
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-13"
+  access_count: 6
+- id: dyn-gen-028
+  fact: "On 2026-03-13, the CEO re-checked out DYN-18, confirmed DYN-20 was complete, and moved the parent issue to `blocked` because the only remaining next step is board approval `c4e1cd2a-9854-4f09-9962-e6fedc4e57ca` for the QA Automation Engineer before the QA-owned scenario track can be opened."
+  category: status
+  timestamp: "2026-03-13"
+  source: "2026-03-13"
+  status: superseded
+  superseded_by: dyn-gen-029
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-13"
+  access_count: 4
+- id: dyn-gen-029
+  fact: "On 2026-03-13, approval `c4e1cd2a-9854-4f09-9962-e6fedc4e57ca` was approved, the CEO checked out DYN-18 back into `in_progress`, created DYN-21 for the QA Automation Engineer, and shifted the parent from approval wait-state into active QA scenario execution oversight."
+  category: milestone
+  timestamp: "2026-03-13"
+  source: "2026-03-13"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-13"
+  access_count: 2
+- id: dyn-gen-030
+  fact: "On 2026-03-13, the CEO closed DYN-22 after fixing the app-shell scroll leak by constraining the workspace shell to the viewport, keeping the chat message list as the owning scroll container, adding `apps/app/tests/e2e/app-shell.spec.ts`, and re-verifying targeted ESLint on the touched files plus `pnpm --filter @repo/app test:e2e -- app-shell.spec.ts` and `pnpm --filter @repo/app build`."
+  category: milestone
+  timestamp: "2026-03-13"
+  source: "2026-03-13"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-13"
+  access_count: 1
+- id: dyn-gen-031
+  fact: "On 2026-03-12, the CEO independently verified that `DYN-21` delivered the QA regression matrix and acceptance scenarios, reran `pnpm test:agent` plus `pnpm test:app:e2e`, and closed the testing-system parent `DYN-18`."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-13"
+  access_count: 2
+- id: dyn-gen-032
+  fact: "On 2026-03-12, the CEO closed `DYN-23` by adding the project-local `skills/fail-fast-engineering/` skill, validating it, and wiring it into the Founding Engineer and Applied Multimodal Engineer instructions so contract-heavy work defaults to fail-fast checks instead of silent fallbacks."
+  category: milestone
+  timestamp: "2026-03-12"
+  source: "2026-03-12"
+  status: active
+  superseded_by: null
+  related_entities:
+    - projects/dyn-gen
+  last_accessed: "2026-03-13"
+  access_count: 2

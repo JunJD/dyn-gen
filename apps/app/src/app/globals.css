@@ -3,28 +3,399 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --chart-tooltip-bg: #ffffff;
-  --chart-tooltip-border: #e5e7eb;
-  --chart-axis: #6b7280;
+  color-scheme: light;
+
+  --font-sans: "Instrument Sans", "Helvetica Neue", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", "Menlo", "Monaco", monospace;
+
+  --bg-app: #eef2f4;
+  --bg-canvas: #f7f9fa;
+  --bg-panel: #ffffff;
+  --bg-panel-muted: #f2f5f6;
+  --bg-panel-strong: #e5eaed;
+  --bg-panel-inverse: #11161a;
+
+  --bg-panel-solid: var(--bg-panel);
+  --bg-surface: var(--bg-panel);
+  --bg-surface-muted: var(--bg-panel-muted);
+  --bg-surface-strong: var(--bg-panel-strong);
+  --bg-inverse: var(--bg-panel-inverse);
+
+  --border-subtle: rgba(17, 22, 26, 0.08);
+  --border-default: rgba(17, 22, 26, 0.14);
+  --border-strong: rgba(17, 22, 26, 0.22);
+
+  --text-primary: #11161a;
+  --text-secondary: #44515d;
+  --text-tertiary: #6a7681;
+  --text-inverse: #f6f8f9;
+
+  --accent: #0f766e;
+  --accent-hover: #0c5f59;
+  --accent-soft: #d7efeb;
+  --accent-contrast: #f3fffd;
+
+  --success: #1e7a50;
+  --warning: #9a6a1c;
+  --danger: #bf4c37;
+  --focus: #0f766e;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 6px 18px rgba(14, 20, 24, 0.06);
+  --shadow-md: 0 14px 36px rgba(14, 20, 24, 0.08);
+  --shadow-lg: 0 24px 60px rgba(14, 20, 24, 0.12);
+
+  --motion-fast: 120ms;
+  --motion-base: 180ms;
+  --motion-slow: 260ms;
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --text-h1-size: 28px;
+  --text-h1-line-height: 32px;
+  --text-h2-size: 20px;
+  --text-h2-line-height: 26px;
+  --text-h3-size: 16px;
+  --text-h3-line-height: 22px;
+  --text-body-size: 14px;
+  --text-body-line-height: 22px;
+  --text-small-size: 12px;
+  --text-small-line-height: 18px;
+  --text-micro-size: 11px;
+  --text-micro-line-height: 16px;
+
+  --chart-tooltip-bg: var(--bg-panel);
+  --chart-tooltip-border: var(--border-default);
+  --chart-axis: var(--text-tertiary);
 }
 
-:root.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --chart-tooltip-bg: #27272a;
-  --chart-tooltip-border: #3f3f46;
-  --chart-axis: #a1a1aa;
+.dark {
+  color-scheme: dark;
+
+  --bg-app: #0c1114;
+  --bg-canvas: #11171b;
+  --bg-panel: #171d22;
+  --bg-panel-muted: #1d252b;
+  --bg-panel-strong: #27313a;
+  --bg-panel-inverse: #f4f7f8;
+
+  --bg-panel-solid: var(--bg-panel);
+  --bg-surface: var(--bg-panel);
+  --bg-surface-muted: var(--bg-panel-muted);
+  --bg-surface-strong: var(--bg-panel-strong);
+  --bg-inverse: var(--bg-panel-inverse);
+
+  --border-subtle: rgba(244, 247, 248, 0.08);
+  --border-default: rgba(244, 247, 248, 0.14);
+  --border-strong: rgba(244, 247, 248, 0.22);
+
+  --text-primary: #f4f7f8;
+  --text-secondary: #c3ccd3;
+  --text-tertiary: #8a96a1;
+  --text-inverse: #0c1114;
+
+  --accent: #4fb3a7;
+  --accent-hover: #69c6bb;
+  --accent-soft: rgba(79, 179, 167, 0.16);
+  --accent-contrast: #061816;
+
+  --success: #59b382;
+  --warning: #d6a457;
+  --danger: #ea836d;
+  --focus: #69c6bb;
+
+  --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 18px 42px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 28px 72px rgba(0, 0, 0, 0.36);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  background: var(--bg-app);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100dvh;
+  background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--accent-soft) 36%, transparent) 0,
+      transparent 160px
+    ),
+    var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
 }
 
-body,
-html {
-  height: 100%;
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  transition: background-color var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 18%, white);
+  color: var(--text-primary);
+}
+
+:focus-visible:not(.workspace-focusable) {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 18%, transparent);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--border-strong) 88%, transparent);
+  border-radius: var(--radius-pill);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.font-mono-ui {
+  font-family: var(--font-mono), "SFMono-Regular", "IBM Plex Mono", "Menlo",
+    monospace;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.workspace-focusable {
+  transition: background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+
+.workspace-focusable:focus-visible {
+  outline: none;
+  box-shadow: var(--workspace-shadow, none),
+    0 0 0 3px color-mix(in srgb, var(--focus) 18%, transparent);
+}
+
+.workspace-panel {
+  --workspace-shadow: inset 0 0 0 1px
+      color-mix(in srgb, var(--border-default) 84%, transparent),
+    var(--shadow-md);
+  background: var(--bg-panel);
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-card {
+  --workspace-shadow: inset 0 0 0 1px
+      color-mix(in srgb, var(--border-subtle) 92%, transparent),
+    var(--shadow-sm);
+  background: var(--bg-panel);
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-card-muted {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-subtle) 88%, transparent);
+  background: color-mix(in srgb, var(--bg-panel-muted) 88%, var(--bg-panel));
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-overlay {
+  --workspace-shadow: inset 0 0 0 1px
+      color-mix(in srgb, var(--border-default) 82%, transparent),
+    var(--shadow-lg);
+  background: var(--bg-panel);
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-pill {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-subtle) 76%, transparent);
+  background: color-mix(in srgb, var(--bg-panel-muted) 86%, var(--bg-panel));
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-pill-accent {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--accent) 22%, transparent);
+  background: color-mix(in srgb, var(--accent-soft) 88%, var(--bg-panel));
+  box-shadow: var(--workspace-shadow);
+  color: var(--accent);
+}
+
+.workspace-control {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-default) 84%, transparent);
+  background: var(--bg-panel);
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-control:hover {
+  --workspace-shadow: inset 0 0 0 1px
+      color-mix(in srgb, var(--border-strong) 80%, transparent),
+    var(--shadow-sm);
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-control-muted {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-subtle) 84%, transparent);
+  background: color-mix(in srgb, var(--bg-panel-muted) 80%, var(--bg-panel));
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-control-muted:hover {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-default) 84%, transparent);
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-field {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-default) 82%, transparent);
+  background: color-mix(in srgb, var(--bg-panel-muted) 90%, var(--bg-panel));
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-field:hover {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-strong) 78%, transparent);
+  box-shadow: var(--workspace-shadow);
+}
+
+.workspace-field:focus-within {
+  --workspace-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--focus) 36%, transparent);
+  background: var(--bg-panel);
+  box-shadow: var(--workspace-shadow),
+    0 0 0 3px color-mix(in srgb, var(--focus) 14%, transparent);
+}
+
+.workspace-surface {
+  background: var(--bg-canvas);
+}
+
+.workspace-segment {
+  color: var(--text-secondary);
+}
+
+.workspace-segment:hover {
+  background: color-mix(in srgb, var(--bg-panel-muted) 80%, var(--bg-panel));
+  color: var(--text-primary);
+}
+
+.workspace-segment-active {
+  background: var(--bg-panel);
+  color: var(--text-primary);
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-default) 88%, transparent);
+}
+
+.workspace-meta {
+  background: color-mix(in srgb, var(--bg-panel-muted) 84%, var(--bg-panel));
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--border-subtle) 88%, transparent);
+}
+
+.workspace-meta-label {
+  color: var(--text-tertiary);
+  font-family: var(--font-mono), "SFMono-Regular", "IBM Plex Mono", "Menlo",
+    monospace;
+  font-size: var(--text-micro-size);
+  line-height: var(--text-micro-line-height);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.workspace-meta-value {
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.workspace-skeleton {
+  position: relative;
+  overflow: hidden;
+}
+
+.workspace-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--bg-panel-strong) 34%, white),
+    transparent
+  );
+  animation: workspace-shimmer 1.5s linear infinite;
+}
+
+.workspace-status-dot {
+  animation: workspace-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes workspace-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes workspace-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

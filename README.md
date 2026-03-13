@@ -49,7 +49,7 @@ OPENAI_API_KEY=your-openai-api-key-here
 3. Start the development server:
 ```bash
 # Using pnpm
-pnpm dev
+pnpm run dev
 
 # Using npm
 npm run dev
@@ -66,13 +66,37 @@ This will start both the UI and agent servers concurrently.
 ## Available Scripts
 The following scripts can also be run using your preferred package manager:
 - `dev` - Starts both UI and agent servers in development mode
-- `dev:debug` - Starts development servers with debug logging enabled
-- `dev:ui` - Starts only the Next.js UI server
+- `dev:app` - Starts only the Next.js UI server
 - `dev:agent` - Starts only the LangGraph agent server
-- `build` - Builds the Next.js application for production
-- `start` - Starts the production server
+- `build` - Builds the workspace for production
 - `lint` - Runs ESLint for code linting
-- `install:agent` - Installs Python dependencies for the agent
+- `clean` - Runs workspace clean tasks
+- `repair:deps` - Rebuilds dependency links when a local package bin is missing
+- `test:app:e2e:install` - Installs the Playwright Chromium browser used by the app regression harness
+- `test:app:e2e` - Runs the browser-level app regression harness
+- `test:agent` - Runs the Python agent unit checks through `uv`
+- `test` / `test:regression` - Runs the Python agent checks and the app regression harness together
+
+## Testing Workflow
+
+The first testing slice uses a lightweight two-layer setup:
+
+- Playwright for executable browser checks on the app shell
+- BDD-style feature files for readable acceptance scenarios
+
+Key paths:
+
+- `apps/app/tests/features` - human-readable feature scenarios
+- `apps/app/tests/e2e` - executable Playwright specs and shared fixtures
+- `apps/app/tests/README.md` - mapping rules between scenarios and specs
+
+Typical local flow:
+
+```bash
+pnpm test:app:e2e:install
+pnpm test:agent
+pnpm test:app:e2e
+```
 
 ## Documentation
 
@@ -105,5 +129,11 @@ If you see "I'm having trouble connecting to my tools", make sure:
 ### Python Dependencies
 If you encounter Python import errors:
 ```bash
-npm install:agent
+pnpm install
+```
+
+### Missing Local Package Binaries
+If you see errors like `sh: next: command not found` even though the dependency is listed in `apps/app/package.json`, rebuild the pnpm links:
+```bash
+pnpm run repair:deps
 ```
