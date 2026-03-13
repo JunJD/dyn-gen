@@ -3,7 +3,7 @@ name: codegen
 description: Code generation utilities for json-render. Use when generating code from UI specs, building custom code exporters, traversing specs, or serializing props for @json-render/codegen.
 ---
 
-#   /codegen
+# @json-render/codegen
 
 Framework-agnostic utilities for generating code from json-render UI trees. Use these to build custom code exporters for Next.js, Remix, or other frameworks.
 
